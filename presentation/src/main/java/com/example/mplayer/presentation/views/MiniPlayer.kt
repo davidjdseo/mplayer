@@ -8,8 +8,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Card
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Pause
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -26,6 +31,7 @@ fun MiniPlayer(
     onPlayerClick: () -> Unit
 ) {
     val currentSong by viewModel.currentSong.collectAsState()
+    val isPlaying by viewModel.isPlaying.collectAsState()
 
     Card(
         modifier = Modifier
@@ -52,7 +58,24 @@ fun MiniPlayer(
                     .weight(1f)
                     .padding(start = 8.dp)
             )
-            // TODO: 재생/일시정지 버튼 추가
+            IconButton(
+                onClick = {
+                    if (isPlaying) {
+                        viewModel.pause()
+                    } else {
+                        viewModel.play()
+                    }
+                }
+            ) {
+                Icon(
+                    imageVector = if (isPlaying) {
+                        Icons.Default.Pause
+                    } else {
+                        Icons.Default.PlayArrow
+                    },
+                    contentDescription = if (isPlaying) "Pause" else "Play"
+                )
+            }
         }
     }
 }

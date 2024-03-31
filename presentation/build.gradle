@@ -54,7 +54,7 @@ dependencies {
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
 
     // Koin for Android
     implementation "io.insert-koin:koin-android:$koin_version"
