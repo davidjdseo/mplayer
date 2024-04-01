@@ -16,19 +16,29 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.SkipNext
 import androidx.compose.material.icons.filled.SkipPrevious
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.mplayer.presentation.viewmodels.PlayerViewModel
+import com.google.android.exoplayer2.MediaItem
 
 @Composable
 fun PlayerScreen(
     viewModel: PlayerViewModel,
 ) {
+
     val currentSong by viewModel.currentSong.collectAsState()
     val isPlaying by viewModel.isPlaying.collectAsState()
+
+    LaunchedEffect(currentSong) {
+        val mediaItem = MediaItem.fromUri(currentSong?.fileName ?: "")
+        viewModel.exoPlayer.setMediaItem(mediaItem)
+        viewModel.exoPlayer.prepare()
+        viewModel.exoPlayer.play()
+    }
 
     Column(
         modifier = Modifier.fillMaxSize(),

@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
  * @param albumRepository 앨범 리포지토리
  * @author david
  */
-class GetAlbumsUseCase(
+class GetAlbumsUseCase (
     private val albumRepository: AlbumRepository
 ) {
     /**

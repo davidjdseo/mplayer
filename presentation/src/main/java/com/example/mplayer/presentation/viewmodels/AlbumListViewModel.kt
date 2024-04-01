@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.stateIn
  * @param getAlbumsUseCase 앨범 목록을 가져오는 유스케이스
  * @author david
  */
-class AlbumListViewModel(
+class AlbumListViewModel (
     private val getAlbumsUseCase: GetAlbumsUseCase
 ) : ViewModel() {
 

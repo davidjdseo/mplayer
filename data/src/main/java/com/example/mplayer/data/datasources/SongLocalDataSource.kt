@@ -7,15 +7,15 @@ import com.example.mplayer.data.models.SongEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.withContext
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.withContext
 
 /**
  * 로컬 저장소에서 곡 데이터를 가져오는 데이터 소스
  * @param context 애플리케이션 컨텍스트
  * @author david
  */
-class SongLocalDataSource(private val context: Context) {
+class SongLocalDataSource(private val context: Context)  {
 
     /**
      * 로컬 저장소에서 곡 데이터를 가져오는 데이터 소스
@@ -42,7 +42,6 @@ class SongLocalDataSource(private val context: Context) {
             val titleColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.TITLE)
             val artistColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST)
             val albumIdColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM_ID)
-            val albumArtColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.ALBUM_ART)
             val trackColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.TRACK)
             val durationColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION)
 
@@ -51,7 +50,6 @@ class SongLocalDataSource(private val context: Context) {
                 val title = cursor.getString(titleColumn)
                 val artist = cursor.getString(artistColumn)
                 val albumId = cursor.getLong(albumIdColumn)
-                val albumArt = cursor.getString(albumArtColumn)
                 val trackNumber = cursor.getInt(trackColumn)
                 val duration = cursor.getLong(durationColumn)
                 val uri = ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id)
@@ -61,7 +59,6 @@ class SongLocalDataSource(private val context: Context) {
                     title = title,
                     artist = artist,
                     albumId = albumId,
-                    albumArt = albumArt,
                     trackNumber = trackNumber,
                     fileName = uri.toString(),
                     duration = duration
@@ -95,7 +92,6 @@ class SongLocalDataSource(private val context: Context) {
                     val titleColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.TITLE)
                     val artistColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ARTIST)
                     val albumIdColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.ALBUM_ID)
-                    val albumArtColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.ALBUM_ART)
                     val trackColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.TRACK)
                     val durationColumn = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DURATION)
 
@@ -103,7 +99,6 @@ class SongLocalDataSource(private val context: Context) {
                     val title = cursor.getString(titleColumn)
                     val artist = cursor.getString(artistColumn)
                     val albumId = cursor.getLong(albumIdColumn)
-                    val albumArt = cursor.getString(albumArtColumn)
                     val trackNumber = cursor.getInt(trackColumn)
                     val duration = cursor.getLong(durationColumn)
                     val uri = ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, id)
@@ -113,7 +108,6 @@ class SongLocalDataSource(private val context: Context) {
                         title = title,
                         artist = artist,
                         albumId = albumId,
-                        albumArt = albumArt,
                         trackNumber = trackNumber,
                         fileName = uri.toString(),
                         duration = duration

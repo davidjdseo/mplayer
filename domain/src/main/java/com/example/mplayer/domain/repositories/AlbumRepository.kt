@@ -5,4 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface AlbumRepository {
     fun getAlbums(): Flow<List<Album>>
+    suspend fun getAlbumById(albumId: Long): Album?
+
 }

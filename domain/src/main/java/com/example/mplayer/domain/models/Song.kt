@@ -5,7 +5,6 @@ data class Song(
     val title: String,
     val artist: String,
     val albumId: Long,
-    val albumArt: String,
     val trackNumber: Int,
     val fileName: String,
     val duration: Long

@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.map
  * @author david
  */
 class AlbumRepositoryImpl(
-    private val localDataSource: AlbumLocalDataSource
+    private val albumLocalDataSource: AlbumLocalDataSource
 ) : AlbumRepository {
 
     /**
@@ -20,9 +20,13 @@ class AlbumRepositoryImpl(
      * @return 앨범 리스트를 담고 있는 Flow
      */
     override fun getAlbums(): Flow<List<Album>> {
-        return localDataSource.getAlbums()
+        return albumLocalDataSource.getAlbums()
             .map { albums ->
                 albums.map { it.toDomainModel() }
             }
+    }
+
+    override suspend fun getAlbumById(albumId: Long): Album? {
+        return albumLocalDataSource.getAlbumById(albumId)?.toDomainModel()
     }
 }

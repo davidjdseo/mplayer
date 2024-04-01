@@ -32,7 +32,7 @@ fun MiniPlayer(
 ) {
     val currentSong by viewModel.currentSong.collectAsState()
     val isPlaying by viewModel.isPlaying.collectAsState()
-
+    val currentAlbumArt by viewModel.currentAlbumArt.collectAsState()
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -45,7 +45,7 @@ fun MiniPlayer(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                painter = rememberAsyncImagePainter(model = currentSong?.albumArt),
+                painter = rememberAsyncImagePainter(model = currentAlbumArt),
                 contentDescription = null,
                 modifier = Modifier.size(48.dp)
             )

@@ -12,7 +12,6 @@ data class SongEntity(
     val title: String,
     val artist: String,
     val albumId: Long,
-    val albumArt: String,
     val trackNumber: Int,
     val fileName: String,
     val duration: Long
@@ -23,7 +22,6 @@ data class SongEntity(
             title = title,
             artist = artist,
             albumId = albumId,
-            albumArt = albumArt,
             trackNumber = trackNumber,
             fileName = fileName,
             duration = duration
