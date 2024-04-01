@@ -10,10 +10,10 @@ import com.example.mplayer.domain.usecases.GetSongUseCase
 import com.example.mplayer.domain.usecases.GetSongsUseCase
 import com.example.mplayer.presentation.viewmodels.AlbumListViewModel
 import com.example.mplayer.presentation.viewmodels.PlayerViewModel
-import com.example.mplayer.presentation.viewmodels.SongListViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+
 /**
  * Koin 앱 모듈
  * @author david
@@ -32,7 +32,6 @@ val appModule = module {
     factory { GetSongUseCase(get()) }
 
     viewModel { AlbumListViewModel(get()) }
-    viewModel { SongListViewModel(get()) }
     viewModel { PlayerViewModel(get(), get(), androidApplication()) }
 
 

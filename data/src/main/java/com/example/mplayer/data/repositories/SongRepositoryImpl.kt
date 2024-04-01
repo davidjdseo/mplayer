@@ -1,5 +1,6 @@
 package com.example.mplayer.data.repositories
 
+import android.util.Log
 import com.example.mplayer.data.datasources.SongLocalDataSource
 import com.example.mplayer.domain.models.Song
 import com.example.mplayer.domain.repositories.SongRepository
@@ -21,9 +22,13 @@ class SongRepositoryImpl(
      * @return 곡 리스트를 담고 있는 Flow
      */
     override fun getSongs(albumId: Long): Flow<List<Song>> {
+        Log.e("TAG", "call getSongs ")
         return localDataSource.getSongs(albumId)
             .map { songs -> 
-                songs.map { it.toDomainModel() }
+                songs.map {
+                    Log.e("TAG", "getSongs song : ${it.toString()}")
+                    it.toDomainModel()
+                }
             }
     }
 
